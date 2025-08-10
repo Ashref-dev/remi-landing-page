@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remi — Your AI Knowledge Hub for macOS</title>
+    <meta
+      name="description"
+      content="Remi is a free, open‑source macOS menu bar app that becomes your AI‑powered personal knowledge hub. Save prompts, snippets, commands, and notes — retrieve them instantly with a global hotkey."
+    />
+    <meta
+      property="og:title"
+      content="Remi — Your AI Knowledge Hub for macOS"
+    />
+    <meta
+      property="og:description"
+      content="Free, open‑source macOS menu bar app for storing prompts, snippets, commands, and notes — retrieved instantly via a global hotkey."
+    />
+    <meta property="og:image" content="logo.png" />
+    <meta name="theme-color" content="#BC4F2C" />
+    <link rel="icon" href="logo.png" />
+    <link rel="apple-touch-icon" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      window.REMI_GITHUB_URL =
+        'https://github.com/Ashref-dev/remi-notes-project';
+    </script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Remi Home">
+          <img src="top-logo.png" height="56" alt="Remi logo" />
+        </a>
+        <nav class="main-nav">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#for">For whom</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#community">Community</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="#github" id="navStarBtn">
+            <span class="btn-icon" aria-hidden="true"
+              ><i class="fa-solid fa-star"></i
+            ></span>
+            <span>Star the Repo</span>
+          </a>
+          <a class="btn btn-primary" href="#download" id="navDownloadBtn">
+            <span class="btn-icon" aria-hidden="true"
+              ><i class="fa-solid fa-download"></i
+            ></span>
+            <span>Download</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="section hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <div class="hero-badge">
+              <i class="fas fa-brain"></i>
+              AI‑Powered Knowledge Hub
+            </div>
+            <h1 id="hero-title" class="h1">
+              Your <em class="cursive">smart</em> menu-bar knowledge
+              <em class="cursive">companion</em>
+            </h1>
+            <p class="lead">
+              Remi transforms your macOS menu bar into a supercharged knowledge
+              management system. It's your personal assistant for storing,
+              organizing, and instantly accessing your knowledge.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary btn-lg" href="#download">
+                <span>Download Free</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn btn-ghost btn-lg" href="#github">
+                <i class="fab fa-github"></i>
+                <span>View on GitHub</span>
+              </a>
+            </div>
+
+            <div class="social-proof">
+              <div class="hero-features">
+                <div class="hero-feature">
+                  <i class="fas fa-keyboard"></i>
+                  <span
+                    >Global hotkey: <kbd>⌘</kbd><kbd>⇧</kbd><kbd>R</kbd></span
+                  >
+                </div>
+                <div class="hero-feature">
+                  <i class="fas fa-code"></i>
+                  <span>SwiftUI native • Open source</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="fas fa-free-code-camp"></i>
+                  <span>MIT licensed • Free forever</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="hero-image">
+              <img src="remi.gif" alt="Remi in action" class="hero-gif" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section features">
+        <div class="container">
+          <h2 class="h2 center">
+            Everything you need to <em class="cursive">remember</em>, organized
+          </h2>
+          <p class="center subhead">
+            Designed for speed, built natively for macOS, and powered by the AI
+            you choose.
+          </p>
+          <div class="features-grid">
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <h3 class="h3">AI Model Selector</h3>
+              <p>
+                Choose Groq, OpenAI, or any supported provider with one click.
+                Switch contexts without breaking flow.
+              </p>
+            </article>
+
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-edit"></i>
+              </div>
+              <h3 class="h3">Create & Edit Notes</h3>
+              <p>
+                Create custom Nooks to organize your knowledge. Write, edit, and
+                store prompts, code snippets, commands, and notes with rich text
+                support.
+              </p>
+            </article>
+
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-keyboard"></i>
+              </div>
+              <h3 class="h3">Instant Global Hotkey</h3>
+              <p>
+                Summon Remi from anywhere with
+                <strong><kbd>⌘</kbd><kbd>⇧</kbd><kbd>R</kbd></strong
+                >. Save and retrieve in seconds.
+              </p>
+            </article>
+
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <h3 class="h3">Lightning‑Fast AI Editing</h3>
+              <p>
+                Groq‑powered quick edits, summaries, and refactors — all inline,
+                all instant.
+              </p>
+            </article>
+
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <h3 class="h3">Beautiful, Native SwiftUI</h3>
+              <p>
+                Mac‑first design with smooth animations, desktop‑class controls,
+                and a timeless light theme.
+              </p>
+            </article>
+
+            <article class="card feature reveal">
+              <div class="card-icon" aria-hidden="true">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <h3 class="h3">Persistent Customization</h3>
+              <p>
+                Your theme, layout, and markdown preferences are saved and
+                restored — every time.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section id="how" class="section how-works">
+        <div class="container">
+          <div class="how-header reveal">
+            <h2 class="h2 center">How It <em class="cursive">Works</em></h2>
+            <p class="center subhead">
+              Four simple steps to transform your workflow
+            </p>
+          </div>
+
+          <div class="steps-container">
+            <div class="steps-timeline"></div>
+
+            <div class="step-card reveal" data-step="1">
+              <div class="step-indicator">
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                  <i class="fas fa-download"></i>
+                </div>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Install Remi</h3>
+                <p class="step-description">
+                  Download the latest release and drag it into your Applications
+                  folder. Remi lives quietly in your menu bar, ready when you
+                  need it.
+                </p>
+                <div class="step-visual">
+                  <div class="mock-menubar">
+                    <div class="menubar-item remi-icon">
+                      <i class="fas fa-brain"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card reveal" data-step="2">
+              <div class="step-indicator">
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                  <i class="fas fa-folder-plus"></i>
+                </div>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Create Your Nooks</h3>
+                <p class="step-description">
+                  Design custom spaces for different types of knowledge.
+                  Organize prompts, code snippets, commands, and notes exactly
+                  how you think.
+                </p>
+                <div class="step-visual">
+                  <div class="nooks-preview">
+                    <div class="nook-item">📝 Quick Notes</div>
+                    <div class="nook-item">💻 Code Snippets</div>
+                    <div class="nook-item">🤖 AI Prompts</div>
+                    <div class="nook-item">⚡ Commands</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card reveal" data-step="3">
+              <div class="step-indicator">
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Choose Your AI</h3>
+                <p class="step-description">
+                  Select any model from the Groq offerings. Add your API key
+                  once and switch between models effortlessly.
+                </p>
+                <div class="step-visual">
+                  <div class="ai-selector">
+                    <div class="ai-option active"><span>🚀</span> GPT-OSS</div>
+                    <div class="ai-option"><span>🧠</span> Llama 4</div>
+                    <div class="ai-option"><span>⚡</span> Qwen 3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card reveal" data-step="4">
+              <div class="step-indicator">
+                <div class="step-number">4</div>
+                <div class="step-icon">
+                  <i class="fas fa-magic"></i>
+                </div>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Access Instantly</h3>
+                <p class="step-description">
+                  Summon Remi from anywhere with
+                  <span class="hotkey-combo">
+                    <kbd>⌘</kbd><kbd>⇧</kbd><kbd>R</kbd>
+                  </span>
+                  Find, edit, and enhance your knowledge in milliseconds.
+                </p>
+                <div class="step-visual">
+                  <div class="hotkey-demo">
+                    <div class="hotkey-animation">
+                      <kbd class="key-cmd">⌘</kbd>
+                      <span class="plus">+</span>
+                      <kbd class="key-shift">⇧</kbd>
+                      <span class="plus">+</span>
+                      <kbd class="key-r">R</kbd>
+                    </div>
+                    <div class="result-popup">
+                      <i class="fas fa-search"></i>
+                      <span>Remi is ready...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- For Whom -->
+      <section id="for" class="section for-modern">
+        <div class="container">
+          <div class="for-header reveal">
+            <h2 class="h2 center">
+              Built for <em class="cursive">professionals</em> who value
+              efficiency
+            </h2>
+            <p class="center subhead">
+              Remi adapts to your workflow, whether you're coding, researching,
+              or managing systems. Your knowledge, organized and accessible in
+              milliseconds.
+            </p>
+          </div>
+
+          <div class="for-layout">
+            <!-- Left side features -->
+            <div class="for-features for-features-left">
+              <div class="for-feature reveal" data-delay="0.1">
+                <div class="for-feature-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3 class="for-feature-title">Developer Focused</h3>
+                <p class="for-feature-description">
+                  Store code snippets, API references, and terminal commands.
+                  Access patterns and solutions across all your projects
+                  instantly.
+                </p>
+              </div>
+
+              <div class="for-feature reveal" data-delay="0.2">
+                <div class="for-feature-icon">
+                  <i class="fas fa-server"></i>
+                </div>
+                <h3 class="for-feature-title">System Administration</h3>
+                <p class="for-feature-description">
+                  Organize runbooks, shell scripts, and incident response
+                  procedures. Critical information available when you need it
+                  most.
+                </p>
+              </div>
+            </div>
+
+            <!-- Center image -->
+            <div class="for-center reveal" data-delay="0.3">
+              <div class="for-image-container">
+                <img
+                  src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                  alt="Modern workspace with laptop and coffee"
+                  class="for-hero-image"
+                />
+                <div class="for-image-overlay">
+                  <img src="top-logo.png" height="64" alt="" srcset="" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Right side features -->
+            <div class="for-features for-features-right">
+              <div class="for-feature reveal" data-delay="0.4">
+                <div class="for-feature-icon">
+                  <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="for-feature-title">AI Power Users</h3>
+                <p class="for-feature-description">
+                  Perfect prompts, model comparisons, and conversation
+                  templates. Build your personal AI knowledge library.
+                </p>
+              </div>
+
+              <div class="for-feature reveal" data-delay="0.5">
+                <div class="for-feature-icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <h3 class="for-feature-title">Research & Analysis</h3>
+                <p class="for-feature-description">
+                  Collect insights, save references, and organize findings.
+                  Transform scattered information into structured knowledge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visual Showcase -->
+      <section id="showcase" class="section showcase">
+        <div class="container">
+          <h2 class="h2 center">See Remi in <em class="cursive">action</em></h2>
+          <p class="center subhead">
+            Streamlined UI with Nooks, Quick Actions, rearrangeable layouts, and
+            an AI model selector — crafted for a timeless light aesthetic.
+          </p>
+          <div class="showcase-frame reveal">
+            <div class="frame-tabs" role="tablist" aria-label="Showcase views">
+              <button
+                class="tab active"
+                data-showcase-tab="nooks"
+                aria-selected="true"
+              >
+                Nooks
+              </button>
+              <button class="tab" data-showcase-tab="quick">
+                AI Quick Actions
+              </button>
+              <button class="tab" data-showcase-tab="rearrange">
+                Rearranging
+              </button>
+              <button class="tab" data-showcase-tab="models">
+                Model Selector
+              </button>
+            </div>
+            <div class="frame-body">
+              <img src="remi.gif" alt="Remi UI showcase" />
+              <div class="frame-caption" id="showcaseCaption">
+                Nooks — organize prompts, snippets, commands, and notes.
+              </div>
+            </div>
+          </div>
+          <div class="mode-note center">
+            Carefully tuned for clarity and warmth — light mode only.
+          </div>
+        </div>
+      </section>
+
+      <!-- Vision Section -->
+      <section class="section vision-section">
+        <div class="container">
+          <div class="vision-content">
+            <h2 class="h2 center">
+              Built for the <em class="cursive">modern</em> knowledge worker who
+              values<br />
+              speed, privacy, and <em class="cursive">simplicity</em>
+            </h2>
+            <p class="vision-subtitle center">
+              Join developers, researchers, and professionals using Remi daily
+            </p>
+
+            <div class="value-props">
+              <div class="value-prop">
+                <i class="fas fa-shield-alt"></i>
+                <span>Privacy First</span>
+                <p>Your data stays on your Mac</p>
+              </div>
+              <div class="value-prop">
+                <i class="fas fa-bolt"></i>
+                <span>Lightning Fast</span>
+                <p>Global access in milliseconds</p>
+              </div>
+              <div class="value-prop">
+                <i class="fas fa-heart"></i>
+                <span>Open Source</span>
+                <p>MIT licensed & transparent</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="section stats-section">
+        <div class="container">
+          <h2 class="h2 center">Remi In <em class="cursive">Numbers</em></h2>
+          <div class="stats-grid">
+            <div class="stat-item reveal">
+              <div class="stat-number">⌘⇧R</div>
+              <div class="stat-label">Global Hotkey</div>
+            </div>
+            <div class="stat-item reveal">
+              <div class="stat-number">&lt;100ms</div>
+              <div class="stat-label">Access Time</div>
+            </div>
+            <div class="stat-item reveal">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Privacy Protected</div>
+            </div>
+            <div class="stat-item reveal">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Nooks & Notes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Remi -->
+      <section class="section why-section">
+        <div class="container">
+          <h2 class="h2 center">
+            Why <em class="cursive">developers</em><br />
+            love Remi
+          </h2>
+
+          <div class="why-grid">
+            <div class="why-item reveal">
+              <div class="why-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3>Instant Access</h3>
+              <p>
+                Your knowledge is always one keystroke away. No more digging
+                through files or forgetting where you saved that snippet.
+              </p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h3>Smart Organization</h3>
+              <p>
+                Nooks automatically organize your content. Drag, drop, and
+                rearrange to match your workflow perfectly.
+              </p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">
+                <i class="fas fa-magic"></i>
+              </div>
+              <h3>AI‑Powered</h3>
+              <p>
+                Choose your AI provider and enhance your knowledge with
+                intelligent suggestions and quick improvements.
+              </p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Privacy First</h3>
+              <p>
+                Your data never leaves your Mac. Open source means you can
+                verify everything Remi does.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community & Open Source -->
+      <section id="community" class="section community-modern">
+        <div class="container">
+          <div class="community-layout">
+            <!-- Left side with mascot and intro -->
+            <div class="community-visual reveal">
+              <div class="glass-card">
+                <img src="logo.png" alt="Remi mascot" class="mascot" />
+                <div class="mascot-text">
+                  <h3>Meet Remi</h3>
+                  <p>
+                    Your friendly knowledge companion with orange hair and a
+                    blue beret — always ready to help you remember what matters.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right side with features -->
+            <div class="community-content">
+              <div class="community-header">
+                <div class="feature-badge">
+                  <i class="fas fa-code-branch"></i>
+                  Open Source
+                </div>
+                <h2 class="h2">
+                  Built with <em class="cursive">love</em> for the<br />
+                  developer community
+                </h2>
+              </div>
+
+              <div class="feature-list-modern">
+                <div class="feature-item-modern reveal" data-delay="0.1">
+                  <div class="feature-border"></div>
+                  <div class="feature-content">
+                    <div class="feature-header">
+                      <i class="fas fa-users"></i>
+                      <h4>Community Driven</h4>
+                    </div>
+                    <p>
+                      Join discussions, report issues, and contribute features.
+                      Your feedback shapes Remi's future.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="feature-item-modern reveal" data-delay="0.2">
+                  <div class="feature-border"></div>
+                  <div class="feature-content">
+                    <div class="feature-header">
+                      <i class="fas fa-code"></i>
+                      <h4>Transparent Development</h4>
+                    </div>
+                    <p>
+                      Every line of code is open source. Review, audit, and
+                      contribute to make Remi even better.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="feature-item-modern reveal" data-delay="0.3">
+                  <div class="feature-border"></div>
+                  <div class="feature-content">
+                    <div class="feature-header">
+                      <i class="fas fa-heart"></i>
+                      <h4>Free Forever</h4>
+                    </div>
+                    <p>
+                      MIT licensed means Remi will always be free. No
+                      subscriptions, no limits, no tracking.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="download" class="section final-cta">
+        <div class="container final-cta-inner">
+          <div class="cta-badge">
+            <i class="fas fa-download"></i>
+            Ready to Transform Your Workflow?
+          </div>
+          <h2 class="h2 center">
+            Start organizing your <em class="cursive">knowledge</em> today
+          </h2>
+          <p class="center subhead">
+            Transform your macOS menu bar into a supercharged knowledge
+            management system. Free, open‑source, and ready to use.
+          </p>
+          <div class="cta-row center">
+            <a class="btn btn-primary btn-lg" href="#download">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Free</span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#github">
+              <i class="fa-brands fa-github"></i>
+              <span>View on GitHub</span>
+            </a>
+          </div>
+          <div class="cta-features">
+            <div class="cta-feature">
+              <i class="fas fa-shield-alt"></i>
+              <span>100% Free & Open Source</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-apple-alt"></i>
+              <span>Native macOS App</span>
+            </div>
+            <div class="cta-feature">
+              <i class="fas fa-bolt"></i>
+              <span>Instant Setup</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <img src="logo.png" width="20" height="20" alt="Remi logo small" />
+          <span>Remi - <span id="currentYear"></span></span>
+        </div>
+        <span
+          >Made with <em class="cursive">love</em> by
+          <a href="https://ashref.tn" target="_blank">ashref.tn</a></span
+        >
+        <div class="footer-right">
+          <span>SwiftUI • macOS • MIT License</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Installation Instructions Modal -->
+    <div
+      id="installModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <h2 id="modal-title" class="modal-title">Install Remi on macOS</h2>
+          <button class="modal-close" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="install-badge">
+            <i class="fas fa-shield-alt"></i>
+            <span>Development Build - Security Instructions Included</span>
+          </div>
+
+          <div class="download-status">
+            <div class="download-notification">
+              <i class="fas fa-download"></i>
+              <span
+                >Download started! Follow the steps below to install Remi.</span
+              >
+            </div>
+          </div>
+
+          <div class="install-steps">
+            <div class="install-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Download Started!</h3>
+                <p>
+                  Your download should start automatically. If it doesn't, use
+                  the link below to download manually.
+                </p>
+                <a
+                  href="#github"
+                  class="step-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>Download from GitHub</span>
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Extract & Move to Applications</h3>
+                <p>
+                  Extract the downloaded zip file and drag
+                  <strong>Remi.app</strong> to your Applications folder.
+                </p>
+                <div class="drag-demo">
+                  <div class="drag-item">
+                    <i class="fas fa-brain"></i>
+                    <span>Remi.app</span>
+                  </div>
+                  <i class="fas fa-arrow-right drag-arrow"></i>
+                  <div class="applications-folder">
+                    <i class="fas fa-folder"></i>
+                    <span>Applications</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Bypass Security Warning</h3>
+                <p>
+                  Since this is a development build, macOS will show a security
+                  warning. Here's how to open it safely:
+                </p>
+                <div class="security-steps">
+                  <div class="security-step">
+                    <div class="security-icon">
+                      <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <span
+                      >Right-click on <strong>Remi.app</strong> in
+                      Applications</span
+                    >
+                  </div>
+                  <div class="security-step">
+                    <div class="security-icon">
+                      <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <span
+                      >Select <strong>"Open"</strong> from the context
+                      menu</span
+                    >
+                  </div>
+                  <div class="security-step">
+                    <div class="security-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span
+                      >Click <strong>"Open"</strong> in the security warning
+                      dialog</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="install-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Launch & Enjoy</h3>
+                <p>
+                  Remi will appear in your menu bar and remember your security
+                  choice for future launches.
+                </p>
+                <div class="launch-demo">
+                  <div class="menubar-demo">
+                    <i class="fas fa-brain"></i>
+                    <span>Look for Remi in your menu bar</span>
+                  </div>
+                  <div class="hotkey-reminder">
+                    <span>Global hotkey:</span>
+                    <div class="hotkey-combo">
+                      <kbd>⌘</kbd><kbd>⇧</kbd><kbd>R</kbd>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="footer-note">
+              <i class="fas fa-info-circle"></i>
+              <span
+                >macOS will remember your choice - you only need to do this
+                once!</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
