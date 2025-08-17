@@ -282,22 +282,12 @@ img { max-width: 100%; display: block; }
 /* How it works - Modern Design */
 .how-works {
   padding: 120px 0;
-  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+  background: var(--bg-soft);
   position: relative;
-  overflow: hidden;
 }
 
 .how-works::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(188, 79, 44, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(65, 135, 185, 0.05) 0%, transparent 50%);
-  pointer-events: none;
+  display: none;
 }
 
 .how-header {
@@ -790,22 +780,12 @@ img { max-width: 100%; display: block; }
 /* For whom - Modern Layout */
 .for-modern {
   padding: 120px 0;
-  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+  background: var(--bg);
   position: relative;
-  overflow: hidden;
 }
 
 .for-modern::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 30% 20%, rgba(188, 79, 44, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(65, 135, 185, 0.03) 0%, transparent 50%);
-  pointer-events: none;
+  display: none;
 }
 
 .for-header {
@@ -1151,7 +1131,7 @@ img { max-width: 100%; display: block; }
 
 /* Stats Section */
 .stats-section {
-  background: var(--bg-elev);
+  background: var(--bg-soft);
   padding: 80px 0;
 }
 
@@ -1219,7 +1199,7 @@ img { max-width: 100%; display: block; }
 
 /* Community Section - Modern */
 .community-modern {
-  background: var(--bg-soft);
+  background: var(--bg);
   padding: 100px 0;
 }
 
@@ -1458,6 +1438,17 @@ img { max-width: 100%; display: block; }
   display: inline-flex; 
   align-items: center; 
   gap: 12px; 
+}
+
+.site-footer a[href="https://ashref.tn"] {
+  color: var(--orange-500);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.site-footer a[href="https://ashref.tn"]:hover {
+  color: var(--orange-600);
 }
 
 /* Animations */
@@ -1960,5 +1951,153 @@ kbd {
   
   .drag-arrow {
     transform: rotate(90deg);
+  }
+}
+
+/* Powered by Groq Section - Modern Minimalist Design */
+.powered-by-section {
+  background: var(--bg);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.powered-by-content {
+  text-align: center;
+  padding: 40px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.powered-by-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.groq-brand {
+  margin: 24px 0 32px;
+}
+
+.groq-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.groq-link:hover {
+  border-color: var(--border);
+  background: var(--bg-soft);
+  transform: translateY(-2px);
+}
+
+.groq-logo {
+  height: 48px;
+  width: 48px;
+  transition: all 0.3s ease;
+}
+
+.groq-link:hover .groq-logo {
+  transform: scale(1.1);
+}
+
+.groq-text-fallback {
+  display: none;
+}
+
+.groq-fallback-logo {
+  height: 40px;
+  width: auto;
+}
+
+.powered-by-description {
+  margin: 24px 0;
+}
+
+.powered-by-description p {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.groq-stats {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.stat-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 32px;
+  background: var(--border-light);
+}
+
+.stat-number {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.stat-unit {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .powered-by-content {
+    padding: 32px 20px;
+  }
+  
+  .stat-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+  
+  .stat-item:not(:last-child) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  
+  .groq-link {
+    padding: 10px 16px;
+  }
+  
+  .groq-logo {
+    height: 32px;
   }
 }

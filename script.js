@@ -282,6 +282,67 @@
   if (currentYearElement) {
     currentYearElement.textContent = new Date().getFullYear();
   }
+
+  // Groq Section - Simple Counter Animation
+  const initGroqStats = () => {
+    const animateCounter = (element, target, suffix = '') => {
+      const duration = 1500;
+      const steps = 60;
+      const increment = target / steps;
+      let current = 0;
+      let step = 0;
+      
+      const timer = setInterval(() => {
+        step++;
+        current = Math.min(target, increment * step);
+        
+        if (suffix === '%') {
+          element.textContent = current.toFixed(1) + suffix;
+        } else if (suffix === 'ms') {
+          element.textContent = Math.ceil(current) + suffix;
+        } else {
+          element.textContent = Math.ceil(current) + suffix;
+        }
+        
+        if (step >= steps) {
+          clearInterval(timer);
+        }
+      }, duration / steps);
+    };
+
+    // Simple intersection observer for stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const statNumbers = entry.target.querySelectorAll('.stat-number[data-count]');
+          statNumbers.forEach((stat) => {
+            const target = parseInt(stat.dataset.count);
+            const unit = stat.nextElementSibling.textContent;
+            let suffix = '';
+            
+            if (unit.includes('uptime')) suffix = '%';
+            else if (unit.includes('latency')) suffix = 'ms';
+            else if (unit.includes('tokens')) suffix = '+';
+            
+            animateCounter(stat, target, suffix);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.7 });
+
+    const statsSection = document.querySelector('.groq-stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+  };
+
+  // Initialize when ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGroqStats);
+  } else {
+    initGroqStats();
+  }
 })();
 
 
