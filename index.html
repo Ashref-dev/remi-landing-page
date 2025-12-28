@@ -72,13 +72,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script>
       window.REMI_GITHUB_URL =
         'https://github.com/Ashref-dev/remi-notes-project';
     </script>
     <script defer src="script.js"></script>
   </head>
-  <body>
+  <body class="loading">
+    <div id="scroll-progress"></div>
+    <div class="parallax-blob blob-1"></div>
+    <div class="parallax-blob blob-2"></div>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="Remi Home">
@@ -118,8 +122,12 @@
               AI‑Powered Knowledge Hub
             </div>
             <h1 id="hero-title" class="h1">
-              Your <em class="cursive">smart</em> menu-bar knowledge
-              <em class="cursive">companion</em>
+              <span class="line-reveal"
+                ><span>Your <em class="cursive">smart</em> menu-bar</span></span
+              >
+              <span class="line-reveal"
+                ><span>knowledge <em class="cursive">companion</em></span></span
+              >
             </h1>
             <p class="lead">
               Remi transforms your macOS menu bar into a supercharged knowledge
@@ -127,14 +135,18 @@
               organizing, and instantly accessing your knowledge.
             </p>
             <div class="cta-row">
-              <a class="btn btn-primary btn-lg" href="#download">
-                <span>Download Free</span>
-                <i class="fas fa-arrow-right"></i>
-              </a>
-              <a class="btn btn-ghost btn-lg" href="#github">
-                <i class="fab fa-github"></i>
-                <span>View on GitHub</span>
-              </a>
+              <div class="magnetic-wrap">
+                <a class="btn btn-primary btn-lg" href="#download">
+                  <span>Download Free</span>
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+              <div class="magnetic-wrap">
+                <a class="btn btn-ghost btn-lg" href="#github">
+                  <i class="fab fa-github"></i>
+                  <span>View on GitHub</span>
+                </a>
+              </div>
             </div>
 
             <div class="social-proof">
@@ -768,8 +780,7 @@
         </div>
         <span
           >Made with <em class="cursive">love</em> by
-          <a href="https://ashref.tn" target="_blank">ashref.tn</a> &
-          <a href="https://rayenft.dev" target="_blank">rayenft.dev</a>
+          <a href="https://ashref.tn" target="_blank">ashref.tn</a>
         </span>
         <div class="footer-right">
           <span>SwiftUI • macOS • MIT License</span>

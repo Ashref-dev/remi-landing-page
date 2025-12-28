@@ -1,17 +1,104 @@
 (function () {
+  // Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  // Scroll Progress Implementation
+  const progressLine = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrollPercent =
+      window.scrollY /
+        (document.documentElement.scrollHeight - window.innerHeight) || 0;
+    if (progressLine) {
+      progressLine.style.transform = `scaleX(${scrollPercent})`;
+    }
+  });
+
+  // Simple Parallax Implementation
+  const blobs = document.querySelectorAll('.parallax-blob');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    blobs.forEach((blob, index) => {
+      const speed = 0.05 * (index + 1);
+      blob.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+  });
+
+  // Magnetic Buttons Implementation
+  class MagneticButton {
+    constructor(el) {
+      this.el = el;
+      this.btn = el.querySelector('.btn');
+      this.bound = el.getBoundingClientRect();
+      this.init();
+    }
+
+    init() {
+      window.addEventListener('resize', () => {
+        this.bound = this.el.getBoundingClientRect();
+      });
+
+      this.el.addEventListener('mousemove', (e) => {
+        const x = e.clientX - this.bound.left - this.bound.width / 2;
+        const y = e.clientY - this.bound.top - this.bound.height / 2;
+        this.btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        this.el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+      });
+
+      this.el.addEventListener('mouseleave', () => {
+        this.btn.style.transform = '';
+        this.el.style.transform = '';
+      });
+    }
+  }
+
+  document
+    .querySelectorAll('.magnetic-wrap')
+    .forEach((wrap) => new MagneticButton(wrap));
+
+  // Feature Card 3D Tilt
+  document.querySelectorAll('.card.feature').forEach((card) => {
+    card.classList.add('card-feature-3d');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const center_x = rect.width / 2;
+      const center_y = rect.height / 2;
+      const tilt_x = (y - center_y) / 10;
+      const tilt_y = (x - center_x) / -10;
+      card.style.transform = `perspective(1000px) rotateX(${tilt_x}deg) rotateY(${tilt_y}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
   // Light-only: remove any theme handling
   const root = document.documentElement;
   const SHOWCASE_COPY = {
     nooks: 'Nooks — organize prompts, snippets, commands, and notes.',
     quick: 'AI Quick Actions — summarize, refactor, and improve on the fly.',
     rearrange: 'Rearranging — drag Nooks to fit your workflow.',
-    models: 'Model Selector — choose Groq, OpenAI, or your preferred provider.'
+    models: 'Model Selector — choose Groq, OpenAI, or your preferred provider.',
   };
 
   // GitHub links configuration
-  const GH_URL = (window.REMI_GITHUB_URL && String(window.REMI_GITHUB_URL)) || '';
+  const GH_URL =
+    (window.REMI_GITHUB_URL && String(window.REMI_GITHUB_URL)) || '';
   const GH_RELEASES_URL = GH_URL ? `${GH_URL.replace(/\/$/, '')}/releases` : '';
-  
+
   document.querySelectorAll('a[href="#github"]').forEach((a) => {
     if (GH_URL) {
       a.href = GH_URL;
@@ -46,19 +133,22 @@
     try {
       const repoUrl = GH_URL.replace('https://github.com/', '');
       const apiUrl = `https://api.github.com/repos/${repoUrl}/releases/latest`;
-      
+
       const response = await fetch(apiUrl);
       const release = await response.json();
-      
+
       // Look for .zip or .app files in assets
-      const asset = release.assets.find(asset => 
-        asset.name.toLowerCase().includes('remi') && 
-        (asset.name.endsWith('.zip') || asset.name.endsWith('.app'))
+      const asset = release.assets.find(
+        (asset) =>
+          asset.name.toLowerCase().includes('remi') &&
+          (asset.name.endsWith('.zip') || asset.name.endsWith('.app'))
       );
-      
+
       return asset ? asset.browser_download_url : null;
     } catch (error) {
-      console.log('Could not fetch latest release, falling back to releases page');
+      console.log(
+        'Could not fetch latest release, falling back to releases page'
+      );
       return null;
     }
   };
@@ -78,10 +168,10 @@
   document.querySelectorAll('a[href="#download"]').forEach((a) => {
     a.addEventListener('click', async (e) => {
       e.preventDefault();
-      
+
       // Show modal immediately
       openModal();
-      
+
       // Try to get and download the latest release
       if (GH_URL) {
         try {
@@ -148,7 +238,7 @@
     card.addEventListener('mouseenter', () => {
       card.style.transform = 'translateY(-8px)';
     });
-    
+
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'translateY(0)';
     });
@@ -163,10 +253,12 @@
   document.querySelectorAll('.nook-item').forEach((item) => {
     item.addEventListener('click', () => {
       // Reset all items
-      document.querySelectorAll('.nook-item').forEach(i => i.classList.remove('selected'));
+      document
+        .querySelectorAll('.nook-item')
+        .forEach((i) => i.classList.remove('selected'));
       // Select current item
       item.classList.add('selected');
-      
+
       // Add a brief glow effect
       item.style.boxShadow = '0 0 20px rgba(188, 79, 44, 0.3)';
       setTimeout(() => {
@@ -179,7 +271,9 @@
   document.querySelectorAll('.ai-option').forEach((option) => {
     option.addEventListener('click', () => {
       // Reset all options
-      document.querySelectorAll('.ai-option').forEach(opt => opt.classList.remove('active'));
+      document
+        .querySelectorAll('.ai-option')
+        .forEach((opt) => opt.classList.remove('active'));
       // Activate current option
       option.classList.add('active');
     });
@@ -189,7 +283,7 @@
   const startHotkeyDemo = () => {
     const keys = document.querySelectorAll('.hotkey-animation kbd');
     const popup = document.querySelector('.result-popup');
-    
+
     keys.forEach((key, index) => {
       setTimeout(() => {
         key.style.transform = 'translateY(-4px) scale(1.1)';
@@ -220,7 +314,10 @@
   const step4Observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (entry.isIntersecting && entry.target.getAttribute('data-step') === '4') {
+        if (
+          entry.isIntersecting &&
+          entry.target.getAttribute('data-step') === '4'
+        ) {
           setTimeout(startHotkeyDemo, 1500);
           // Start repeating demo every 8 seconds
           setInterval(startHotkeyDemo, 8000);
@@ -259,7 +356,11 @@
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        lenis.scrollTo(target, {
+          offset: -80, // Offset for sticky header
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
       }
     });
   });
@@ -278,11 +379,11 @@
       const increment = target / steps;
       let current = 0;
       let step = 0;
-      
+
       const timer = setInterval(() => {
         step++;
         current = Math.min(target, increment * step);
-        
+
         if (suffix === '%') {
           element.textContent = current.toFixed(1) + suffix;
         } else if (suffix === 'ms') {
@@ -290,7 +391,7 @@
         } else {
           element.textContent = Math.ceil(current) + suffix;
         }
-        
+
         if (step >= steps) {
           clearInterval(timer);
         }
@@ -298,25 +399,30 @@
     };
 
     // Simple intersection observer for stats
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const statNumbers = entry.target.querySelectorAll('.stat-number[data-count]');
-          statNumbers.forEach((stat) => {
-            const target = parseInt(stat.dataset.count);
-            const unit = stat.nextElementSibling.textContent;
-            let suffix = '';
-            
-            if (unit.includes('uptime')) suffix = '%';
-            else if (unit.includes('latency')) suffix = 'ms';
-            else if (unit.includes('tokens')) suffix = '+';
-            
-            animateCounter(stat, target, suffix);
-          });
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.7 });
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll(
+              '.stat-number[data-count]'
+            );
+            statNumbers.forEach((stat) => {
+              const target = parseInt(stat.dataset.count);
+              const unit = stat.nextElementSibling.textContent;
+              let suffix = '';
+
+              if (unit.includes('uptime')) suffix = '%';
+              else if (unit.includes('latency')) suffix = 'ms';
+              else if (unit.includes('tokens')) suffix = '+';
+
+              animateCounter(stat, target, suffix);
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.7 }
+    );
 
     const statsSection = document.querySelector('.groq-stats');
     if (statsSection) {
@@ -330,15 +436,15 @@
       initGroqStats();
       // Trigger entrance animations
       setTimeout(() => {
+        document.body.classList.remove('loading');
         document.body.classList.add('loaded');
-      }, 100);
+      }, 300);
     });
   } else {
     initGroqStats();
     setTimeout(() => {
+      document.body.classList.remove('loading');
       document.body.classList.add('loaded');
-    }, 100);
+    }, 300);
   }
 })();
-
-
