@@ -133,24 +133,11 @@
       for (const entry of entries) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          
-          // Special handling for step cards with staggered animation
-          if (entry.target.classList.contains('step-card')) {
-            const stepNumber = entry.target.getAttribute('data-step');
-            entry.target.style.transitionDelay = `${(stepNumber - 1) * 0.2}s`;
-          }
-          
-          // Handle staggered delays for for-modern section
-          if (entry.target.hasAttribute('data-delay')) {
-            const delay = entry.target.getAttribute('data-delay');
-            entry.target.style.transitionDelay = delay;
-          }
-          
           observer.unobserve(entry.target);
         }
       }
     },
-    { threshold: 0.12 }
+    { threshold: 0.15 }
   );
 
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
@@ -339,9 +326,18 @@
 
   // Initialize when ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGroqStats);
+    document.addEventListener('DOMContentLoaded', () => {
+      initGroqStats();
+      // Trigger entrance animations
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 100);
+    });
   } else {
     initGroqStats();
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+    }, 100);
   }
 })();
 

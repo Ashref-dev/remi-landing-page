@@ -31,6 +31,13 @@
   --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
   --ring: 0 0 0 4px rgba(188, 79, 44, 0.15);
+
+  /* Animation Tokens */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --duration-sm: 0.4s;
+  --duration-md: 0.8s;
+  --duration-lg: 1.2s;
 }
 
 /* Base styles */
@@ -145,10 +152,19 @@ img {
   color: var(--text);
   font-weight: 700;
   font-size: 20px;
+  flex-shrink: 0;
 }
 
 .brand img {
   border-radius: 8px;
+  height: 56px;
+  width: auto;
+}
+
+@media (max-width: 480px) {
+  .brand img {
+    height: 40px;
+  }
 }
 
 .main-nav {
@@ -175,6 +191,18 @@ img {
   display: inline-flex;
   gap: 12px;
   align-items: center;
+}
+
+@media (max-width: 600px) {
+  .header-actions {
+    gap: 8px;
+  }
+  .header-actions .btn span:not(.btn-icon) {
+    display: none;
+  }
+  .header-actions .btn {
+    padding: 10px;
+  }
 }
 
 /* Buttons */
@@ -223,8 +251,29 @@ img {
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 60px;
+  gap: 40px;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    text-align: center;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-row {
+    justify-content: center;
+  }
+  .hero-features {
+    align-items: center;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -758,11 +807,14 @@ img {
   border-color: var(--orange-300);
 }
 
-/* Enhanced reveal animations */
+/* Enhanced Animation System */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--duration-md) var(--ease-out-expo),
+    transform var(--duration-md) var(--ease-out-expo);
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -770,24 +822,75 @@ img {
   transform: translateY(0);
 }
 
-/* Staggered animations for features */
-.features-grid .reveal:nth-child(1) {
+/* Specific reveal directions */
+.reveal-left {
+  transform: translateX(-30px);
+}
+.reveal-right {
+  transform: translateX(30px);
+}
+
+/* Hero Entrance Sequence */
+.hero-badge,
+.hero-copy h1,
+.hero-copy .lead,
+.hero-copy .cta-row,
+.hero-copy .social-proof,
+.hero-visual {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-md) var(--ease-out-expo),
+    transform var(--duration-md) var(--ease-out-expo);
+}
+
+.hero-badge {
   transition-delay: 0.1s;
 }
-.features-grid .reveal:nth-child(2) {
+.hero-copy h1 {
   transition-delay: 0.2s;
 }
-.features-grid .reveal:nth-child(3) {
+.hero-copy .lead {
   transition-delay: 0.3s;
 }
-.features-grid .reveal:nth-child(4) {
+.hero-copy .cta-row {
   transition-delay: 0.4s;
 }
-.features-grid .reveal:nth-child(5) {
+.hero-copy .social-proof {
   transition-delay: 0.5s;
 }
-.features-grid .reveal:nth-child(6) {
+.hero-visual {
   transition-delay: 0.6s;
+  transform: translateY(30px) scale(0.98);
+}
+
+.loaded .hero-badge,
+.loaded .hero-copy h1,
+.loaded .hero-copy .lead,
+.loaded .hero-copy .cta-row,
+.loaded .hero-copy .social-proof,
+.loaded .hero-visual {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered Delay Utilities */
+.stagger-1 {
+  --delay: 0.1s;
+}
+.stagger-2 {
+  --delay: 0.2s;
+}
+.stagger-3 {
+  --delay: 0.3s;
+}
+.stagger-4 {
+  --delay: 0.4s;
+}
+.stagger-5 {
+  --delay: 0.5s;
+}
+.stagger-6 {
+  --delay: 0.6s;
 }
 
 /* Animations */
