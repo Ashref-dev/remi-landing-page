@@ -1,10 +1,10 @@
-# <img src="top-logo.png" height="64" alt="Remi" align="center" /> Remi Landing Page
+# <img src="assets/top-logo.webp" height="64" alt="Remi" align="center" /> Remi Landing Page
 
-An elegant, modern landing page for **Remi** — the AI-powered knowledge hub for macOS.
+The landing page for **Remi** — Liquid Glass notes for the macOS menu bar (macOS 26 Tahoe and later). Live at **[remi.achraf.tn](https://remi.achraf.tn)**.
 
 ## About
 
-This repository contains the official landing page for [Remi](https://github.com/Ashref-dev/remi-notes-project), a free and open-source macOS menu bar application that transforms your menu bar into a supercharged knowledge management system.
+This repository contains the official landing page for [Remi](https://github.com/Ashref-dev/remi-notes-project), a free and open-source macOS menu bar notes app. Summon it anywhere with **⌥⌘R** (Option-Command-R), swipe between Nooks with trackpad gestures, and apply AI suggestions powered by OpenRouter with your own API key.
 
 ## Features
 
@@ -20,20 +20,27 @@ This repository contains the official landing page for [Remi](https://github.com
 - **HTML5** — Semantic markup
 - **CSS3** — Modern styling with CSS Grid and Flexbox
 - **Vanilla JavaScript** — No frameworks, just clean JS
-- **Font Awesome** — Beautiful icons
-- **Google Fonts** — Inter & Pacifico typography
+- **Inline SVG icons** — No icon fonts
+- **Google Fonts** — Inter Tight typography
 
 ## Project Structure
 
 ```
 remi-landing-page/
 ├── index.html          # Main landing page
-├── styles.css          # All styling
-├── script.js           # Interactive functionality
-├── logo.png           # Remi mascot logo
-├── top-logo.png       # Header logo
-├── remi.gif           # Application demo
-└── README.md          # This file
+├── styles.css          # All styling (design tokens in :root)
+├── script.js           # Interactions: Nook switcher, AI demo, Liquid Glass, install modal
+├── shader.js           # WebGL sky background (CSS gradient fallback)
+├── assets/             # All in-page images (.webp)
+│   ├── logo.webp
+│   ├── top-logo.webp
+│   ├── wallpaper.webp
+│   ├── app-suggestion.webp
+│   ├── app-review.webp
+│   └── app-applying.webp
+├── logo.png            # Favicon / apple-touch-icon
+├── og.jpg              # Social preview image (1200×630)
+└── README.md           # This file
 ```
 
 ## Main Project
@@ -53,6 +60,6 @@ MIT License - feel free to use this design as inspiration for your own projects.
 ---
 
 <p align="center">
-  Made with <em>love</em> by <a href="https://ashref.tn">ashref.tn</a><br>
+  Made with <em>love</em> by <a href="https://achraf.tn">achraf.tn</a><br>
   <em>SwiftUI • macOS • MIT License</em>
 </p>
